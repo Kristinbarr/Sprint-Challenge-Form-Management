@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import axios from 'axios'
 import { Form, Field, withFormik } from 'formik'
 import * as Yup from 'yup'
 
 const UserForm = ({ errors, touched, status }) => {
-  // const [users, setUsers] = useState([])
-
   return (
     <Form>
       <div>
@@ -24,6 +22,7 @@ const UserForm = ({ errors, touched, status }) => {
     </Form>
   )
 }
+
 const FormikUserForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
