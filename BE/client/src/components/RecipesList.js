@@ -6,6 +6,13 @@ class UserDisplay extends React.Component {
     recipes: []
   }
 
+  remove = (e) => {
+    console.log('e',e)
+    this.setState({
+      recipes: this.state.recipes.filter((item) => item === item)
+    })
+  }
+
   async componentDidMount() {
     await axios
       .get('http://localhost:5000/api/restricted/data')
@@ -32,6 +39,7 @@ class UserDisplay extends React.Component {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            <button onClick={this.remove}>Remove</button>
           </div>
         ))}
       </div>
