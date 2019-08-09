@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import { Form, Field, withFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -37,7 +38,14 @@ const FormikUserForm = withFormik({
     password: Yup.string()
       .min(8)
       .required()
-  })
+  }),
+  handleSubmit(values, { setStatus, resetForm }) {
+    axios.post('http://localhost:5000/api/register', values)
+    .then((res) => {
+      setStatus(res.data)
+      resetForm()
+    })
+  }
 })(UserForm)
 
 export default FormikUserForm
