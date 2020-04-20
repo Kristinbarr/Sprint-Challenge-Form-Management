@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, getByTestId, getByText } from '@testing-library/react'
 import '@testing-library/react/cleanup-after-each'
 import RecipesList from './RecipesList'
 import { ozToMl } from './conversions';
@@ -7,7 +7,7 @@ import { ozToMl } from './conversions';
 describe('conversions', () => {
   describe('ozToMl', () => {
     it('should convert oz to ml', () => {
-      expect(ozToMl(3)).toBe(88.72064825220323)
+      expect(ozToMl(3)).toBe(88.7206)
     })
   })
 })
@@ -17,11 +17,12 @@ describe('<UserForm />', () => {
     render(<RecipesList />)
   })
 
-  it('should click the test button', () => {
-    const clicked = false
-    const { getByText } = render(<RecipesList remove={() => (clicked = true)} />)
-    const testButton = getByText(/submit/i)
-    fireEvent(testButton)
+  it('should click the remove button', () => {
+    const clicked = true
+    const { getByTestId } = render(<RecipesList remove={() => (clicked=true)} />)
+    const testButton = getByText(/remove/i)
+    console.log('testButton', testButton)
+    fireEvent.click(testButton)
     expect(clicked).toBe(true)
   })
 })

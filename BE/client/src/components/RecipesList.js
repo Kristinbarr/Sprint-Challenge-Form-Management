@@ -28,6 +28,9 @@ class UserDisplay extends React.Component {
     return (
       <div>
         <h1>Southern Fried Recipes</h1>
+        <button data-testid='removeButton' onClick={this.remove}>
+          Remove
+        </button>
         {this.state.recipes.map((recipe) => (
           <div key={recipe.name}>
             <h3>Name: {recipe.name}</h3>
@@ -39,7 +42,6 @@ class UserDisplay extends React.Component {
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <button onClick={this.remove}>Remove</button>
           </div>
         ))}
       </div>
