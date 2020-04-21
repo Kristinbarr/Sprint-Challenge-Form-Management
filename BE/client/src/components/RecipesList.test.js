@@ -18,10 +18,10 @@ describe('<UserForm />', () => {
   })
 
   it('should click the remove button', () => {
-    const clicked = true
+    const clicked = false
     const { getByTestId } = render(<RecipesList remove={() => (clicked=true)} />)
     const testButton = getByText(/remove/i)
-    console.log('testButton', testButton)
+    // console.log('testButton', testButton)
     fireEvent.click(testButton)
     expect(clicked).toBe(true)
   })
